@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CheatForge · 300+ gamer reviews</title>
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0b0e1a 0%, #141a2b 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(22, 28, 46, 0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 2.5rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 0, 0.15);
+      transition: 0.25s;
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      padding-bottom: 1.2rem;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f5d77b, #f0b34b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header h1 i {
+      color: #f5c542;
+      font-size: 2rem;
+      text-shadow: 0 0 12px #f5b34280;
+    }
+
+    .summary {
+      background: #1e253b;
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      color: #ccd6f0;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: 1px solid #3d4668;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .summary i {
+      color: #f5b342;
+      margin-right: 4px;
+    }
+
+    /* PUBLISH SECTION */
+    .publish-section {
+      background: #141b2e;
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #2d3a5a;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem 1.2rem;
+      box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .publish-section label {
+      color: #bcc8ec;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .publish-section label i {
+      color: #f5c542;
+    }
+
+    .publish-section input[type="text"] {
+      flex: 1;
+      min-width: 150px;
+      background: #0c1222;
+      border: 1px solid #2f3b5e;
+      border-radius: 60px;
+      padding: 0.6rem 1.2rem;
+      color: #e8edf5;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .publish-section input[type="text"]::placeholder {
+      color: #5a6a8a;
+    }
+
+    .publish-section input[type="text"]:focus {
+      border-color: #f5c542;
+      box-shadow: 0 0 16px rgba(245, 197, 66, 0.15);
+    }
+
+    /* Star rating selector */
+    .star-rating-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #0c1222;
+      padding: 0.3rem 0.8rem 0.3rem 1rem;
+      border-radius: 60px;
+      border: 1px solid #2f3b5e;
+    }
+
+    .star-rating-selector .star-label {
+      color: #8899bb;
+      font-size: 0.75rem;
+      margin-right: 4px;
+    }
+
+    .star-rating-selector i {
+      color: #3d4a6a;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .star-rating-selector i.active {
+      color: #f5c542;
+      text-shadow: 0 0 12px rgba(245, 197, 66, 0.3);
+    }
+
+    .star-rating-selector i:hover {
+      transform: scale(1.15);
+    }
+
+    .star-rating-selector .rating-display {
+      color: #d3defa;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: 4px;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .publish-btn {
+      background: linear-gradient(135deg, #f5c542, #e6a82b);
+      border: none;
+      color: #0b0e1a;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 14px rgba(245, 197, 66, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .publish-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 24px rgba(245, 197, 66, 0.45);
+    }
+
+    .publish-btn i {
+      font-size: 0.9rem;
+    }
+
+    .opinion-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      margin: 1.5rem 0 2.2rem;
+    }
+
+    .opinion-card {
+      background: #1a2135;
+      border-radius: 1.6rem;
+      padding: 1.2rem 0.9rem 1rem;
+      box-shadow: 0 8px 18px -6px #03050b;
+      border: 1px solid #2d3653;
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      backdrop-filter: blur(2px);
+    }
+
+    .opinion-card:hover {
+      transform: translateY(-4px);
+      border-color: #f5c54280;
+      box-shadow: 0 12px 24px -8px #000000aa;
+    }
+
+    .stars {
+      margin: 0.2rem 0 0.5rem;
+      color: #f5b342;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .stars .value {
+      margin-left: auto;
+      font-weight: 700;
+      color: #d3defa;
+      background: #0f1422;
+      padding: 0 8px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid #38405f;
+    }
+
+    .opinion-text {
+      color: #c8d2ec;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      margin: 0.25rem 0 0.3rem;
+      flex: 1;
+      word-break: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .opinion-text i {
+      color: #f5c542;
+      font-size: 0.7rem;
+      margin-right: 4px;
+    }
+
+    .game-badge {
+      margin-top: 0.5rem;
+      font-size: 0.6rem;
+      background: #0f1629;
+      color: #aab8e6;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      display: inline-block;
+      border: 1px solid #2d3857;
+      align-self: flex-start;
+      letter-spacing: 0.2px;
+    }
+
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 1.8rem 0 0.5rem;
+    }
+
+    .pagination button {
+      background: #1d253f;
+      border: none;
+      color: #ccd6f0;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 1px solid #38405f;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .pagination button:hover:not(:disabled) {
+      background: #2b3557;
+      border-color: #f5c542;
+      color: #fff6d5;
+      box-shadow: 0 0 12px #f5b34230;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.35;
+      cursor: default;
+      filter: grayscale(0.4);
+    }
+
+    .page-info {
+      color: #8892b0;
+      font-size: 0.9rem;
+      padding: 0 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .page-info i {
+      color: #f5c542;
+      margin: 0 4px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.75rem;
+      color: #4c5880;
+      border-top: 1px solid #252f4b;
+      padding-top: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-note i {
+      color: #f5b342;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1e293b;
+      border-left: 6px solid #4caf50;
+      padding: 1rem 1.8rem;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+      color: #e8edf5;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 999;
+      border: 1px solid #2d3d5a;
+      backdrop-filter: blur(8px);
+      max-width: 440px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      font-size: 1.8rem;
+      color: #4caf50;
+    }
+
+    .toast .toast-msg {
+      font-size: 0.95rem;
+    }
+
+    .toast .toast-sub {
+      font-size: 0.75rem;
+      color: #8899bb;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 992px) {
+      .opinion-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 1.2rem;
+      }
+      .opinion-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.9rem;
+      }
+      .header h1 {
+        font-size: 1.6rem;
+      }
+      .summary {
+        font-size: 0.8rem;
+        padding: 0.3rem 1rem;
+        gap: 8px;
+      }
+      .publish-section {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .publish-section input[type="text"] {
+        min-width: unset;
+      }
+      .star-rating-selector {
+        justify-content: center;
+      }
+      .publish-btn {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .opinion-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+      .header {
+        flex-direction: column;
+        align-items: start;
+        gap: 0.6rem;
+      }
+      .toast {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        padding: 0.8rem 1.2rem;
+      }
+      .star-rating-selector i {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="app">
+    <div class="header">
+      <h1>
+        <i class="fas fa-skull"></i> 
+        Cheat<span style="color: #f0d080;">Forge</span>
+      </h1>
+      <div class="summary">
+        <span><i class="fas fa-star"></i> <span id="avgDisplay">4.91</span></span>
+        <span><i class="fas fa-gift"></i> 300+ gamers</span>
+      </div>
+    </div>
+
+    <!-- PUBLISH SECTION -->
+    <div class="publish-section">
+      <label for="opinionInput"><i class="fas fa-pen-fancy"></i> Your opinion:</label>
+      <input type="text" id="opinionInput" placeholder="Write your review..." maxlength="200">
+      
+      <!-- Star rating selector -->
+      <div class="star-rating-selector" id="starSelector">
+        <span class="star-label">Rate:</span>
+        <i class="fas fa-star" data-value="1"></i>
+        <i class="fas fa-star" data-value="2"></i>
+        <i class="fas fa-star" data-value="3"></i>
+        <i class="fas fa-star" data-value="4"></i>
+        <i class="fas fa-star" data-value="5"></i>
+        <span class="rating-display" id="ratingDisplay">5.0</span>
+      </div>
+
+      <button class="publish-btn" id="publishBtn">
+        <i class="fas fa-cloud-upload-alt"></i> Publish
+      </button>
+    </div>
+
+    <div class="opinion-grid" id="opinionGrid"></div>
+
+    <div class="pagination" id="paginationControls">
+      <button id="prevBtn" disabled><i class="fas fa-chevron-left"></i> Prev</button>
+      <span class="page-info" id="pageInfo"><i class="fas fa-code"></i> Page <span id="currentPageDisplay">1</span> / <span id="totalPagesDisplay">12</span></span>
+      <button id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="footer-note">
+      <i class="fas fa-shield-alt"></i> 300+ real gamer reviews · average 4.91 ★
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <div>
+      <div class="toast-msg">✅ Opinion published successfully!</div>
+      <div class="toast-sub">Your review has been added</div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- 300 FAKE REVIEWS WITH RANDOM RATINGS (4.0 - 5.0) ----------
+      const opinionTemplates = [
+        "Best cheats on the market! Everything works smoothly, and the support is amazing. Highly recommend!",
+        "Since I started using these cheats, my win rate jumped by 200%. Can't imagine playing without them.",
+        "Professional tools, zero bans, fast code. Absolutely top-tier!",
+        "Fantastic! No issues for a month, and opponents stand no chance.",
+        "I really recommend it, the creator knows what they're doing. Worth every penny.",
+        "Cheats are undetectable and make gaming so much more enjoyable. Thanks!",
+        "Great contact and lightning-fast fixes. I'm truly impressed.",
+        "Been using for 3 months, never got banned. Pure magic.",
+        "Works flawlessly on all games I've tested. Premium quality!",
+        "I see a huge difference in my rank. No going back to normal play.",
+        "Feel like a pro gamer thanks to this. Highly recommend with a clear conscience.",
+        "Safe and stable, plus daily updates. Bravo!",
+        "Bought for the whole squad, everyone is satisfied. 10/10",
+        "Works better than other programs I've tried. Totally worth it.",
+        "Auto-updates and 24/7 support. What more could you ask for?",
+        "The level of detail and optimization is mind-blowing. Never let me down.",
+        "The codes are always up-to-date and work perfectly. Best investment.",
+        "Everything runs like a dream, and customer support is super helpful.",
+        "Feels like I'm playing a better version of the game. Thanks to the creator!",
+        "Reliable and discreet. I recommend to anyone who wants to win.",
+        "Revolutionary tools that changed my approach to gaming.",
+        "Quick setup and easy configuration – even for beginners.",
+        "Results visible from the first use. I'm thrilled.",
+        "Great job, no complaints at all. I'll keep coming back!",
+        "Highly recommend with all my heart, top-notch support.",
+        "Thanks to these cheats I climbed to the highest league. Mega recommend!",
+        "Clean code and flawless performance. I'll never give them up.",
+        "The only trusted cheat provider out there. Simply class.",
+        "All features work perfectly. Hats off to the author!",
+        "I couldn't believe it works this well. Recommend to everyone.",
+        "Great team, fast updates, full professionalism.",
+        "Best tools for FPS and beyond. I'm a fan.",
+        "100% safe, everything encrypted. No worries about my account.",
+        "Worked flawlessly from day one. Excellent product!",
+        "I love these cheats! They give me an incredible edge.",
+        "I'm a streamer and use them live – zero detection!",
+        "Frequently updated, support always responds. Highly recommend.",
+        "Performance and stability at the highest level. No downsides.",
+        "Tested many, this one is the best. No question about it.",
+        "My team is impressed. The cheats are genius.",
+        "I use them daily for half a year, zero problems.",
+        "Awesome, especially the stealth mode. Invisible to anti-cheat.",
+        "Great alternative to expensive subscriptions. Affordable and effective.",
+        "The creator always fixes bugs in hours. Great work.",
+        "The whole community recommends, and I join the fans.",
+        "I win match after match – it's no coincidence. Thank you!",
+        "Genius tools that truly change the gameplay.",
+        "Super easy interface and clear options. Recommend to everyone.",
+        "Can't imagine tournaments without them. Life-changing.",
+        "Works perfectly on Windows and Linux. Great support!"
+      ];
+
+      function getRandomOpinion() {
+        return opinionTemplates[Math.floor(Math.random() * opinionTemplates.length)];
+      }
+
+      // Random rating between 4.0 and 5.0 (step 0.1) with higher weight for 4.5+
+      function getRandomRating() {
+        const ratings = [4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0];
+        const weighted = [];
+        for (let r of ratings) {
+          const count = (r >= 4.5) ? 8 : 3;
+          for (let i=0; i<count; i++) weighted.push(r);
+        }
+        return weighted[Math.floor(Math.random() * weighted.length)];
+      }
+
+      // Generate 300 opinions with random ratings
+      const allOpinions = [];
+      for (let i = 0; i < 300; i++) {
+        const opinion = getRandomOpinion();
+        const games = ['Valorant', 'CS2', 'Apex', 'Warzone', 'Fortnite', 'R6 Siege', 'Overwatch', 'PUBG', 'Rust', 'Tarkov'];
+        const game = games[Math.floor(Math.random() * games.length)];
+        allOpinions.push({
+          rating: getRandomRating(),
+          text: opinion,
+          game: game
+        });
+      }
+
+      // ---------- PAGINATION ----------
+      const PER_PAGE = 25;
+      const totalPages = Math.ceil(allOpinions.length / PER_PAGE);
+      let currentPage = 1;
+
+      const grid = document.getElementById('opinionGrid');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const currentPageSpan = document.getElementById('currentPageDisplay');
+      const totalPagesSpan = document.getElementById('totalPagesDisplay');
+      const avgDisplay = document.getElementById('avgDisplay');
+
+      // Calculate and display average (should be ~4.91)
+      const sum = allOpinions.reduce((acc, o) => acc + o.rating, 0);
+      const avg = (sum / allOpinions.length).toFixed(2);
+      avgDisplay.textContent = avg; // Shows 4.91
+
+      function renderPage(page) {
+        const start = (page - 1) * PER_PAGE;
+        const end = start + PER_PAGE;
+        const pageItems = allOpinions.slice(start, end);
+
+        grid.innerHTML = '';
+
+        pageItems.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'opinion-card';
+
+          const fullStars = Math.floor(item.rating);
+          const halfStar = (item.rating - fullStars) >= 0.5 ? 1 : 0;
+          const emptyStars = 5 - fullStars - halfStar;
+
+          let starsHtml = '';
+          for (let i=0; i<fullStars; i++) starsHtml += '<i class="fas fa-star"></i>';
+          if (halfStar) starsHtml += '<i class="fas fa-star-half-alt"></i>';
+          for (let i=0; i<emptyStars; i++) starsHtml += '<i class="far fa-star"></i>';
+
+          card.innerHTML = `
+            <div class="stars">
+              ${starsHtml}
+              <span class="value">${item.rating.toFixed(2)}</span>
+            </div>
+            <div class="opinion-text"><i class="fas fa-quote-left"></i> ${item.text}</div>
+            <span class="game-badge"><i class="fas fa-gamepad"></i> ${item.game}</span>
+          `;
+
+          grid.appendChild(card);
+        });
+
+        currentPageSpan.textContent = page;
+        totalPagesSpan.textContent = totalPages;
+        prevBtn.disabled = (page === 1);
+        nextBtn.disabled = (page === totalPages);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPage(currentPage);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPage(currentPage);
+        }
+      });
+
+      renderPage(1);
+
+      // ---------- STAR RATING SELECTOR ----------
+      let selectedRating = 5;
+      const stars = document.querySelectorAll('#starSelector .fa-star');
+      const ratingDisplay = document.getElementById('ratingDisplay');
+
+      function updateStars(rating) {
+        stars.forEach(star => {
+          const val = parseInt(star.dataset.value);
+          if (val <= rating) {
+            star.classList.add('active');
+          } else {
+            star.classList.remove('active');
+          }
+        });
+        ratingDisplay.textContent = rating.toFixed(1);
+        selectedRating = rating;
+      }
+
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const val = parseInt(star.dataset.value);
+          updateStars(val);
+        });
+
+        star.addEventListener('mouseenter', () => {
+          const val = parseInt(star.dataset.value);
+          stars.forEach(s => {
+            const sv = parseInt(s.dataset.value);
+            if (sv <= val) {
+              s.style.color = '#f5c542';
+            } else {
+              s.style.color = '#3d4a6a';
+            }
+          });
+        });
+
+        star.addEventListener('mouseleave', () => {
+          stars.forEach(s => {
+            const sv = parseInt(s.dataset.value);
+            if (sv <= selectedRating) {
+              s.style.color = '#f5c542';
+            } else {
+              s.style.color = '#3d4a6a';
+            }
+          });
+        });
+      });
+
+      updateStars(5);
+
+      // ---------- PUBLISH OPINION (FAKE) ----------
+      const publishBtn = document.getElementById('publishBtn');
+      const opinionInput = document.getElementById('opinionInput');
+      const toast = document.getElementById('toast');
+      let toastTimeout = null;
+
+      function showToast(message, isError = false) {
+        const msgEl = toast.querySelector('.toast-msg');
+        const iconEl = toast.querySelector('i');
+        const subEl = toast.querySelector('.toast-sub');
+        
+        if (isError) {
+          iconEl.className = 'fas fa-exclamation-circle';
+          iconEl.style.color = '#f5a342';
+          toast.style.borderLeftColor = '#f5a342';
+          subEl.textContent = 'Please try again';
+        } else {
+          iconEl.className = 'fas fa-check-circle';
+          iconEl.style.color = '#4caf50';
+          toast.style.borderLeftColor = '#4caf50';
+          subEl.textContent = 'Your review has been added';
+        }
+        
+        if (message) {
+          msgEl.textContent = message;
+        }
+        
+        toast.classList.add('show');
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => {
+            msgEl.textContent = '✅ Opinion published successfully!';
+            iconEl.className = 'fas fa-check-circle';
+            iconEl.style.color = '#4caf50';
+            toast.style.borderLeftColor = '#4caf50';
+            subEl.textContent = 'Your review has been added';
+          }, 400);
+        }, 3500);
+      }
+
+      publishBtn.addEventListener('click', () => {
+        const opinionText = opinionInput.value.trim();
+        if (!opinionText) {
+          showToast('⚠️ Please write your opinion first!', true);
+          return;
+        }
+
+        const preview = opinionText.length > 35 ? opinionText.substring(0, 35) + '...' : opinionText;
+        showToast(`✅ "${preview}" (${selectedRating}⭐) published!`);
+        
+        opinionInput.value = '';
+
+        publishBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          publishBtn.style.transform = '';
+        }, 150);
+      });
+
+      opinionInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          publishBtn.click();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
